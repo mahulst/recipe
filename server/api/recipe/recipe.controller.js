@@ -7,7 +7,7 @@ var Recipe = require('./recipe.model');
 exports.index = function(req, res) {
   Recipe.find({})
     .populate('tags')
-    .populate('ingredients')
+    .populate('ingredients.ingredient')
     .exec(function (err, populatedRecipes) {        
       if(err) { return handleError(res, err); }
       return res.json(200, populatedRecipes);
