@@ -20,7 +20,7 @@ var RecipeSchema = new Schema({
   tags: [{
   	type: Schema.Types.ObjectId,
   	ref: 'Tags'
-  }]
+  }],
   active: Boolean
 });
 
