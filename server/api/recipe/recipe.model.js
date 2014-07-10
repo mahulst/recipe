@@ -5,7 +5,22 @@ var mongoose = require('mongoose'),
 
 var RecipeSchema = new Schema({
   name: String,
-  info: String,
+  persons: Number,
+  cookingTime: Number,
+  preparingTime: Number,
+  type: String,
+  ingredients: [{
+  	unit: String,
+  	amount: Number,
+  	ingredient: {
+  		type: Schema.Types.ObjectId,
+  		ref: 'Ingredient'
+  	}
+  }],
+  tags: [{
+  	type: Schema.Types.ObjectId,
+  	ref: 'Tags'
+  }]
   active: Boolean
 });
 
