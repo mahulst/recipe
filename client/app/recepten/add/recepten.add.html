@@ -1,0 +1,10 @@
+<div class="col-md-12">
+	<div id="status-buttons" class="text-center">
+		<a ui-sref-active="active" ui-sref=".basic"><span>1</span> Basis</a>
+		<a ui-sref-active="active" ui-sref=".details"><span>2</span> Details</a>
+		<a ui-sref-active="active" ui-sref=".final"><span>3</span> Final</a>
+	</div>
+	<form id="add-recipe-form" ng-submit="processForm()">
+		<div id="form-views" ui-view></div>
+	</form>
+</div>
