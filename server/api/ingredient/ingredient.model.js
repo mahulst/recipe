@@ -6,6 +6,7 @@ var mongoose = require('mongoose'),
 var IngredientSchema = new Schema({
   name: String,
   info: String,
+  price: Number,
   active: Boolean
 });
 
