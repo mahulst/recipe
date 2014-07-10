@@ -5,10 +5,13 @@ var Recipe = require('./recipe.model');
 
 // Get list of recipes
 exports.index = function(req, res) {
-  Recipe.find(function (err, recipes) {
-    if(err) { return handleError(res, err); }
-    return res.json(200, recipes);
-  });
+  Recipe.find({})
+    .populate('tags')
+    .populate('ingredients')
+    .exec(function (err, populatedRecipes) {        
+      if(err) { return handleError(res, err); }
+      return res.json(200, populatedRecipes);
+    });
 };
 
 // Get a single recipe
