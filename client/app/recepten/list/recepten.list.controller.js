@@ -2,5 +2,5 @@
 
 angular.module('recipeApp')
   .controller('ReceptenListCtrl', function ($scope) {
-    $scope.message = 'Hello';
+    $scope.recipes = [1,2,3];
   });
