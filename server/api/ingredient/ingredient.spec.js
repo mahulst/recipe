@@ -48,6 +48,20 @@ describe('#Ingredient', function () {
           done();
         });
     });
+
+    it('should fail if updating an ingredient that does not exist', function (done) {
+      request(app)
+        .put('/api/ingredients/123')
+        .send(goodIngredient)
+        .expect(500)
+        .end(function (err, response) {
+          var ingredient;
+          ingredient = response.res.body;   
+          should.not.exist(ingredient);       
+          done();
+        });
+    });
+    
     it('should error when ingredient does not have a name', function (done) {
       faultyIngredient.save(function (err) {
         err.name.should.equal("ValidationError");
