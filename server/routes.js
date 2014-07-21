@@ -12,7 +12,6 @@ module.exports = function(app) {
   app.use('/api/tags', require('./api/tag'));
   app.use('/api/ingredients', require('./api/ingredient'));
   app.use('/api/recipes', require('./api/recipe'));
-  app.use('/api/things', require('./api/thing'));
   app.use('/api/users', require('./api/user'));
 
   app.use('/auth', require('./auth'));

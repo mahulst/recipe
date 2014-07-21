@@ -34,7 +34,20 @@ describe('#Ingredient', function () {
         done();
       });
     });
-
+    it('should repsond with added ingredient when adding a ingredient', function (done) {
+      request(app)
+        .post('/api/ingredients/')
+        .send(goodIngredient)
+        .end(function (err, response) {
+          var ingredient;
+          should.not.exist(err);
+          ingredient = response.res.body;
+          //should have following properties
+          ingredient.should.have.properties(['name', 'info', 'locationGroup', 'price', 'active']);
+          ingredient.name.should.equal('Apple');
+          done();
+        });
+    });
     it('should error when ingredient does not have a name', function (done) {
       faultyIngredient.save(function (err) {
         err.name.should.equal("ValidationError");
