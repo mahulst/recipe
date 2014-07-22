@@ -16,6 +16,6 @@ describe('Controller: ReceptenListCtrl', function () {
   }));
 
   it('should add recipes to scope', function () {
-    expect(scope.recipes.length).to.equal(3);
+    expect(scope.recipes).to.be.an('array');
   });
 });
