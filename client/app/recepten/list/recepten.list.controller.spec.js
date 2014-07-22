@@ -19,6 +19,7 @@ describe('Controller: ReceptenListCtrl', function () {
       },{
         name: 'Recipe 3'
       }];
+    //setting up mock backend
     $httpBackend = _$httpBackend_;
     $httpBackend.expectGET('/api/recipes').respond(returnData);
     scope = $rootScope.$new();
