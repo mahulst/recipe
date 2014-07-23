@@ -5,7 +5,7 @@ angular.module('recipeApp')
     $stateProvider
       .state('ingredienten', {
         url: '/ingredienten',
-        templateUrl: 'app/ingredienten/ingredienten.html',
-        controller: 'IngredientenCtrl'
+        templateUrl: 'app/ingredienten/list/ingredienten.list.html',
+        controller: 'IngredientenListCtrl'
       });
   });

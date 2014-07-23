@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('recipeApp')
-  .controller('IngredientenCtrl', function ($scope) {
+  .controller('IngredientenAddCtrl', function ($scope) {
     $scope.message = 'Hello';
   });
