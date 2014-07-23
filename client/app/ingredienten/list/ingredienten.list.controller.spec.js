@@ -12,6 +12,7 @@ describe('Controller: IngredientenListCtrl', function () {
     returnData = [{ 
         name: "Apple",
         info: "Doodnormale appel",
+        id: 1
       }, { 
         name: "Pear",
         info: "Doodnormale peer",
@@ -46,9 +47,13 @@ describe('Controller: IngredientenListCtrl', function () {
     var controller = createController();
     $httpBackend.flush();   
     // $httpBackend.flush();
+    expect($rootScope.ingredients.length).to.equal(3);
 
     $httpBackend.expectDELETE('/api/ingredients/1').respond(201,'');
     $rootScope.deleteIngredient(1);
     $httpBackend.flush();
+
+    //expect one ingredient to be deleted
+    expect($rootScope.ingredients.length).to.equal(2);
   });
 });
