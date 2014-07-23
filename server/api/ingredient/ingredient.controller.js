@@ -9,6 +9,9 @@ exports.index = function(req, res) {
     if(err) { return handleError(res, err); }
     return res.json(200, ingredients);
   });
+};// Get model of ingredient
+exports.model = function(req, res) {
+  return res.json(200, Ingredient.schema.paths);
 };
 
 // Get a single ingredient

@@ -1,4 +1,47 @@
-<div class="col-md-12">
-This is the ingredienten.list view.
-</div>
+
 <div ui-view></div>
+<div class="col-md-12">
+<a ui-sref="ingredienten.add">add</a>
+	<table class="table table-striped">
+	<tr>
+		<th>
+			name
+		</th>
+		<th>
+			info
+		</th>
+		<th>
+			locatie groep
+		</th>
+		<th>
+			prijs
+		</th>
+		<th>
+			aan/uit
+		</th>
+		<th>
+			edit
+		</th>
+	</tr>
+	<tr ng-repeat="ingredient in ingredients">
+		<td>
+			{{ingredient.name}}
+		</td>
+		<td>
+			{{ingredient.info}}
+		</td>
+		<td>
+			{{ingredient.locationGroup}}
+		</td>
+		<td>
+			{{ingredient.price}}
+		</td>
+		<td>
+			{{ingredient.active}}
+		</td>
+		<td>
+			edit
+		</td>
+	</tr>
+	</table>
+</div>
