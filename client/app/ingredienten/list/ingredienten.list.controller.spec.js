@@ -5,10 +5,10 @@ describe('Controller: IngredientenListCtrl', function () {
   // load the controller's module
   beforeEach(module('recipeApp'));
 
-  var IngredientenListCtrl, scope, $httpBackend, returnData;
+  var IngredientenListCtrl, $controller, $rootScope, $httpBackend, returnData, createController;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope, _$httpBackend_) {
+  beforeEach(inject(function ($injector, _$httpBackend_) {
     returnData = [{ 
         name: "Apple",
         info: "Doodnormale appel",
@@ -19,20 +19,36 @@ describe('Controller: IngredientenListCtrl', function () {
         name: "Flour",
         info: "Patent bloem",
       }];
-    scope = $rootScope.$new();
+    $controller = $injector.get('$controller');
+    $rootScope = $injector.get('$rootScope');
     $httpBackend = _$httpBackend_;
-    IngredientenListCtrl = $controller('IngredientenListCtrl', {
-      $scope: scope
-    });
+
+    $httpBackend.when('GET', '/api/ingredients').respond(returnData);
+
+    createController = function () {
+      return $controller('IngredientenListCtrl', {
+        $scope: $rootScope
+      });
+    }
   }));
 
-  it('should ...', function () {
-    $httpBackend.expectGET('/api/ingredients')
-      .respond(returnData);
-    expect(scope.ingredients).to.be.an('array');
+  it('should add ingredients to scope', function () {
+    $httpBackend.expectGET('/api/ingredients');
 
+    var controller = createController();
+    $httpBackend.flush();   
+
+    expect($rootScope.ingredients).to.be.an('array'); 
+    expect($rootScope.ingredients.length).to.equal(3);
+  });
+  
+  it('should delete ingredients by id', function () {
+    var controller = createController();
+    $httpBackend.flush();   
+    // $httpBackend.flush();
+
+    $httpBackend.expectDELETE('/api/ingredients/1').respond(201,'');
+    $rootScope.deleteIngredient(1);
     $httpBackend.flush();
-    
-    expect(scope.ingredients.length).to.equal(3);
   });
 });
