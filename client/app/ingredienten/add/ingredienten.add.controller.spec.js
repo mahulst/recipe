@@ -5,17 +5,27 @@ describe('Controller: IngredientenAddCtrl', function () {
   // load the controller's module
   beforeEach(module('recipeApp'));
 
-  var IngredientenAddCtrl, scope;
+  var $controller, $rootScope, createController, $httpBackend;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    IngredientenAddCtrl = $controller('IngredientenAddCtrl', {
-      $scope: scope
-    });
+  beforeEach(inject(function ($injector) {
+    $controller = $injector.get('$controller');
+    $rootScope = $injector.get('$rootScope');
+    $httpBackend = $injector.get('$httpBackend');
+
+    createController = function () {
+      return $controller('IngredientenAddCtrl', {
+        $scope: $rootScope
+      });
+    };
   }));
 
-  it('should ...', function () {
-    expect(1).to.equal(1);
+  it('should have an object representing the ingredient model', function () {
+    var model = {},
+      controller = createController();
+    $httpBackend.expectGET('/api/ingredients/model')
+      .respond(model);
+    $httpBackend.flush();
+    expect($rootScope.ingredientModel).to.be.an('object');
   });
 });
