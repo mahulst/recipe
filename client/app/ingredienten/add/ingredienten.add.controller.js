@@ -7,6 +7,6 @@ angular.module('recipeApp')
     	delete $scope.ingredientModel.__v;
     });
     $scope.saveIngredient = function (ingredient) {
-    	Ingredient.save(ingredient);
+    	return Ingredient.save(ingredient).$promise;
     };
   });
