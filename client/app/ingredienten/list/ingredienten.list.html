@@ -22,6 +22,9 @@
 		<th>
 			edit
 		</th>
+		<th>
+			remove
+		</th>
 	</tr>
 	<tr ng-repeat="ingredient in ingredients">
 		<td>
@@ -42,6 +45,9 @@
 		<td>
 			edit
 		</td>
+		<th>
+			<button ng-click="deleteIngredient(ingredient)">delete</button>
+		</th>
 	</tr>
 	</table>
 </div>

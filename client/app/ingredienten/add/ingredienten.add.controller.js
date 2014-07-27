@@ -5,6 +5,7 @@ angular.module('recipeApp')
     $scope.ingredientModel = Ingredient.model();
     $scope.ingredientModel.$promise.then(function () {
     	delete $scope.ingredientModel.__v;
+    	delete $scope.ingredientModel._id;
     });
     $scope.saveIngredient = function (ingredient) {
     	return Ingredient.save(ingredient).$promise;

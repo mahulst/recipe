@@ -1,3 +1,4 @@
+'use strict';
 angular.module('recipeApp').directive('dynamicName', function($compile) {
   return {
     restrict: 'A',
@@ -7,7 +8,7 @@ angular.module('recipeApp').directive('dynamicName', function($compile) {
       var name = scope.$eval(attrs.dynamicName);
       if (name) {
         element.attr('name', name);
-        element.removeAttr("dynamic-name");
+        element.removeAttr('dynamic-name');
         $compile(element)(scope);
       }
     }

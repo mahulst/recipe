@@ -14,5 +14,5 @@ angular.module('recipeApp').directive('formInput', function($compile) {
 
       $compile(element.contents())(scope);
     }
-  }
+  };
 });

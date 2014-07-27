@@ -4,10 +4,10 @@ angular.module('recipeApp')
   .controller('IngredientenListCtrl', function ($scope, Ingredient) {
   	$scope.ingredients = Ingredient.query();
 
-  	$scope.deleteIngredient = function (id){
+  	$scope.deleteIngredient = function (ingredient){
   		$scope.ingredients = _.filter($scope.ingredients, function(item) {
-  			return item.id !== id;
+  			return item._id !== ingredient._id;
   		});
-  		Ingredient.delete({id:id});
+  		Ingredient.delete({id:ingredient._id});
   	};
   });
