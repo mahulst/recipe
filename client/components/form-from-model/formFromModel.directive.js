@@ -6,10 +6,11 @@ angular.module('recipeApp')
       templateUrl: 'components/form-from-model/formFromModel.html',
       restrict: 'E',
       scope: {
-      	modelData : '=modelData'
+      	modelData : '=modelData',
+      	save: '&'
       },
-      link: function () {
-
+      link: function (scope) {
+      	scope.ingredient = {};
       }
     };
   });

@@ -3,17 +3,20 @@
 	<div class="col-sm-12">
 		<h1>Add Ingredient</h1>
 	</div>
-	<div class="mh-input-row col-sm-12" ng-repeat="(key,val) in modelData">
-		<form class="form" name="form" ng-submit="addIngredient(form)" novalidate>
-			<div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
-	                                            'has-error': form.name.$invalid && submitted }">
-	        	<label>{{key}}</label>
-	        	<input type="text" name="name" ng-model="ingredient[key]" required/>
-				<p class="help-block" ng-show="form[key].$error.required && submitted">
-					invalid
-				</p>
-	    	</div>
+		<form class="form" name="form" ng-submit="save({ingredient: ingredient})" novalidate>
+			<div class="mh-input-row col-sm-12" ng-repeat="(key,val) in modelData">
+				<div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
+		                                            'has-error': form.name.$invalid && submitted }">
+		        	<label>{{key}}</label>
+		        	<input type="text" name="name" ng-model="ingredient[key]" required/>
+					<p class="help-block" ng-show="form[key].$error.required && submitted">
+						invalid
+					</p>
+		    	</div>
+			</div>
+			<button>submit</button>
+			<div>
+			</div>
 		</form>
-	</div>
 </div>
 </div>

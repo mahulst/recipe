@@ -6,4 +6,7 @@ angular.module('recipeApp')
     $scope.ingredientModel.$promise.then(function () {
     	delete $scope.ingredientModel.__v;
     });
+    $scope.saveIngredient = function (ingredient) {
+    	Ingredient.save(ingredient);
+    };
   });
