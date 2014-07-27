@@ -4,11 +4,10 @@
 		<h1>Add Ingredient</h1>
 	</div>
 	<form class="form" name="form" ng-submit="save(form)" novalidate>
-{{errors}}
         <div class="form-group"  ng-repeat="(key,val) in modelData" ng-class="{ 'has-success': form[key].$valid && submitted,
                                             'has-error': form[key].$invalid && submitted }">
                                             
-		<form-input type="text" max-length="10" 
+		<form-input type="text" 
 		    labeltext="{{key}}" cssclass="form-control" 
 		    inputname="{{key}}" model="ingredient[key]"></form-input>
           <p class="mh-help-block help-block" ng-show="form[key].$error && submitted">
@@ -16,7 +15,6 @@
           </p>
         </div>
 		<button>submit</button>
-		<div> {{ingredient}}</div>
 		</form>
 </div>
 </div>
