@@ -16,7 +16,6 @@ angular.module('recipeApp')
           	//delete old errors
           	angular.forEach(scope.errors, function(error, field) {
       				form[field].$setValidity('mongoose', true);
-              console.log(field+ " is valid")
       			});
           	scope.errors = {};
       		scope.saveFn({ingredient: scope.ingredient}).catch(function (err) {
@@ -25,7 +24,6 @@ angular.module('recipeApp')
 				// Update validity of form fields that match the mongoose errors
 				angular.forEach(err.errors, function(error, field) {
 					form[field].$setValidity('mongoose', false);
-              console.log(field+ " is invalid")
 					scope.errors[field] = error.message;
 				});
       		});
