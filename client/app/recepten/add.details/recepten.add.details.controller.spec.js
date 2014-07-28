@@ -23,4 +23,14 @@ describe('Controller: ReceptenAddDetailsCtrl', function () {
     $rootScope.fetchIngredientsByQuery('abc');
     $httpBackend.flush();
   });
+
+  it('should add an empty ingredient to ingredients array' , function () {
+    var controller = createController();
+
+    expect($rootScope.recipe.ingredients.length).to.equal(0);
+
+    //add ingredient
+    $rootScope.addIngredient();
+    expect($rootScope.recipe.ingredients.length).to.equal(1);
+  });
 });

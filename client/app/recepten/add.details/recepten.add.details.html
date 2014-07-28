@@ -12,7 +12,7 @@
 				ingredient
 			</th>
 		</tr>
-		<tr>
+		<tr ng-repeat="ingredient in recipe.ingredients">
 			<td>
 				<div class="form-group">
 				    <input type="text" class="form-control" name="name" ng-model="ingredient.unit">
@@ -24,7 +24,7 @@
 				</div>
 			</td>
 			<td>
-			    <select-autocomplete fetch-result="fetchIngredientsByQuery(query)" />
+			    <select-autocomplete mh-model="ingredient.ingredient" fetch-result="fetchIngredientsByQuery(query)" />
 			</td>
 		</tr>
 	</table>

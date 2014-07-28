@@ -2,7 +2,10 @@
 
 angular.module('recipeApp')
   .controller('ReceptenAddDetailsCtrl', function ($scope, Ingredient) {
-    $scope.message = 'Hello';
+  	$scope.recipe = $scope.recipe || {};
+    if(!$scope.recipe.ingredients) {
+    	$scope.recipe.ingredients = [];
+    }
     $scope.fetchIngredientsByQuery = function (query) {
     	var promise;
     	if(query !== '') {
@@ -13,5 +16,9 @@ angular.module('recipeApp')
 	    	promise = {then: function () {}} 
 	    }
 	    return promise;
+    };
+
+    $scope.addIngredient = function () {
+    	$scope.recipe.ingredients.push({});
     };
   });

@@ -7,13 +7,13 @@ angular.module('recipeApp')
       restrict: 'E',
       replace: true,
       scope: {
-      	fetchResult: '&'
+      	fetchResult: '&',
+        mhModel: '='
       },
       link: function (scope) {
         var lastQuery = '',
           filter;
         scope.indexOfSelected = 0;
-      	scope.query = '';
       	scope.showResult = false;
         scope.selectedValue = null;
         scope.fetchedResult = [];
