@@ -10,14 +10,18 @@ angular.module('recipeApp')
       	fetchResult: '&'
       },
       link: function (scope) {
+        var lastQuery = '';
       	scope.query = '';
       	scope.showResult = false;
 
       	scope.filter = function (query) {
-      		scope.showResult = (query !== '');
+          if(lastQuery !== query) {
+            lastQuery = query;
+        		scope.showResult = (query !== '');
 	      		scope.fetchResult({query: query}).then(function (data) {
               scope.fetchedResult = data;
             });
+          }
       	};
 
       	scope.onBlur = function () {

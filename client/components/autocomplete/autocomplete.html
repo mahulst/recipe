@@ -1,8 +1,8 @@
 <div class="form-group">
 	<input ng-keyup="filter(query)" ng-model="query" class="form-control mh-ac-search-input"/>
 	<div class="mh-ac-result-box" ng-show="showResult">
-		<div ng-repeat="item in fetchedResult">
-		{{item.name}}
+		<div ng-class="{selected: $first}" ng-repeat="item in fetchedResult">
+			{{item.name}}
 		</div> 
 	</div>
 </div>
