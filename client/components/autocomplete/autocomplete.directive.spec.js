@@ -6,14 +6,15 @@ describe('Directive: autocomplete', function () {
   beforeEach(module('recipeApp'));
   beforeEach(module('components/autocomplete/autocomplete.html'));
 
-  var element, scope, triggerKeyUp;
+  var element, scope, getKeyUpEvent;
 
   beforeEach(inject(function ($rootScope) {
     scope = $rootScope.$new();
-    triggerKeyUp = function (element, keyCode) {
-      var e = angular.element.Event('keyup');
-      e.which = keyCode;
-      element.trigger(e);
+    getKeyUpEvent = function (keyCode) {
+      var e = {
+        keyCode: keyCode
+      }
+      return e;
     };
   }));
 
@@ -38,7 +39,7 @@ describe('Directive: autocomplete', function () {
     scope.$apply();    
     isolateScope = element.isolateScope();
     isolateScope.query = 'A';
-    isolateScope.filter(isolateScope.query);
+    isolateScope.onKeyUp(getKeyUpEvent(65));
     expect(isolateScope.showResult).to.be.true;
   }));
 
@@ -55,7 +56,7 @@ describe('Directive: autocomplete', function () {
     isolateScope = element.isolateScope();
 
     isolateScope.query = 'A';
-    isolateScope.filter(scope.query);
+    isolateScope.onKeyUp(getKeyUpEvent(65));
     expect(isolateScope.showResult).to.be.true;
 
     isolateScope.onBlur();
@@ -73,8 +74,8 @@ describe('Directive: autocomplete', function () {
     element = $compile(element)(scope);
     scope.$apply();    
     isolateScope = element.isolateScope();
-
-    isolateScope.filter('test');
+    isolateScope.query = 'test';
+    isolateScope.onKeyUp(getKeyUpEvent(65));
     expect(isolateScope.fetchedResult).to.be.true;
     expect(isolateScope.fetchedQuery).to.equal('test');
   }));

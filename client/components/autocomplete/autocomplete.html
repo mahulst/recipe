@@ -1,8 +1,10 @@
 <div class="form-group">
-	<input ng-keyup="filter(query)" ng-model="query" class="form-control mh-ac-search-input"/>
+	<input ng-keyup="onKeyUp($event)" ng-model="query" class="form-control mh-ac-search-input"/>
 	<div class="mh-ac-result-box" ng-show="showResult">
-		<div ng-class="{selected: $first}" ng-repeat="item in fetchedResult">
+		<!-- initially set first element as selected -->
+		<div ng-class="{selected: indexOfSelected === $index}" ng-repeat="item in fetchedResult">
 			{{item.name}}
 		</div> 
 	</div>
+	
 </div>

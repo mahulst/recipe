@@ -16,7 +16,7 @@ exports.model = function(req, res) {
 };
 // Get array of ingredients by string
 exports.queryByString = function(req, res) {
-  var name = req.params.query;
+  var name = req.params.query.replace(/\\/g, "\\\\");
   Ingredient.find({name:  new RegExp(name, "i")}, function (err, ingredients) {
     if(err) { return handleError(res, err); }
     return res.json(200, ingredients);
