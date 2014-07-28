@@ -28,9 +28,14 @@ describe('Directive: autocomplete', function () {
 
   it('should show results when search bar has been filled', inject(function ($compile) {
     var isolateScope;
-    element = angular.element('<select-autocomplete></select-autocomplete>');
+     scope.fetchResult = function (query) {
+      isolateScope.fetchedResult = true;
+      isolateScope.fetchedQuery = query;
+      return {then: function(){}};
+    };
+    element = angular.element('<select-autocomplete fetch-result="fetchResult(query)"></select-autocomplete>');
     element = $compile(element)(scope);
-    scope.$apply();
+    scope.$apply();    
     isolateScope = element.isolateScope();
     isolateScope.query = 'A';
     isolateScope.filter(isolateScope.query);
@@ -39,9 +44,14 @@ describe('Directive: autocomplete', function () {
 
   it('should hide results when search bar blurs ', inject(function ($compile) {
     var isolateScope;
-    element = angular.element('<select-autocomplete></select-autocomplete>');
+    scope.fetchResult = function (query) {
+      isolateScope.fetchedResult = true;
+      isolateScope.fetchedQuery = query;
+      return {then: function(){}};
+    };
+    element = angular.element('<select-autocomplete fetch-result="fetchResult(query)"></select-autocomplete>');
     element = $compile(element)(scope);
-    scope.$apply();
+    scope.$apply();    
     isolateScope = element.isolateScope();
 
     isolateScope.query = 'A';
@@ -57,6 +67,7 @@ describe('Directive: autocomplete', function () {
     scope.fetchResult = function (query) {
       isolateScope.fetchedResult = true;
       isolateScope.fetchedQuery = query;
+      return {then: function(){}};
     };
     element = angular.element('<select-autocomplete fetch-result="fetchResult(query)"></select-autocomplete>');
     element = $compile(element)(scope);

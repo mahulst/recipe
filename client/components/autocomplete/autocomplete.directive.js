@@ -15,9 +15,9 @@ angular.module('recipeApp')
 
       	scope.filter = function (query) {
       		scope.showResult = (query !== '');
-      		if(scope.fetchResult) {
-	      		scope.fetchResult({query: query});		
-	      	}
+	      		scope.fetchResult({query: query}).then(function (data) {
+              scope.fetchedResult = data;
+            });
       	};
 
       	scope.onBlur = function () {

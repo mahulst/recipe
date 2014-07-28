@@ -9,11 +9,19 @@ exports.index = function(req, res) {
     if(err) { return handleError(res, err); }
     return res.json(200, ingredients);
   });
-};// Get model of ingredient
+};
+// Get model of ingredient
 exports.model = function(req, res) {
   return res.json(200, Ingredient.schema.paths);
 };
-
+// Get array of ingredients by string
+exports.queryByString = function(req, res) {
+  var name = req.params.query;
+  Ingredient.find({name:  new RegExp(name, "i")}, function (err, ingredients) {
+    if(err) { return handleError(res, err); }
+    return res.json(200, ingredients);
+  });
+};
 // Get a single ingredient
 exports.show = function(req, res) {
   Ingredient.findById(req.params.id, function (err, ingredient) {
