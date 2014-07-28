@@ -1,3 +1,34 @@
 <div class="col-md-12">
-This is the recepten.add.basic view.
+	<div class="form-group">
+	    <label for="name">Naam van recept</label>
+	    <input type="text" class="form-control" name="name" ng-model="recipe.name">
+	</div>
+
+	<div class="form-group">
+	    <label for="type">Type gerecht</label>
+	    <input type="text" class="form-control" name="type" ng-model="recipe.type">
+	</div>
+
+	<div class="form-group">
+	    <label for="preparingTime">Voorbereidingstijd (min)</label>
+	    <input type="number" class="form-control" name="preparingTime" ng-model="recipe.preparingTime">
+	</div>
+
+	<div class="form-group">
+	    <label for="cookingTime">Tijd in de keuken (min)</label>
+	    <input type="number" class="form-control" name="cookingTime" ng-model="recipe.cookingTime">
+	</div>
+
+	<div class="form-group">
+	    <label for="persons">Aantal personen</label>
+	    <input type="number" class="form-control" name="persons" ng-model="recipe.persons">
+	</div>
+
+	<div class="form-group row">
+	<div class="col-xs-6 col-xs-offset-3">
+	    <a ui-sref="addRecipe.details" class="btn btn-block btn-info">
+	    Volgende <span class="glyphicon glyphicon-circle-arrow-right"></span>
+	    </a>
+	</div>
+	</div>
 </div>
