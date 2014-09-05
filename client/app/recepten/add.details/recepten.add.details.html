@@ -1,3 +1,9 @@
 <div class="col-md-12">
-    This is the recepten.add.details view.
+    <div ng-repeat="step in recipe.steps">
+
+        <div class="form-group">
+            <label for="steps[{{step.id}}]">Stap {{step.id}}</label>
+            <textarea class="form-control" name="steps[{{step.id}}]" ng-model="step.text"/>
+        </div>
+    </div>
 </div>
