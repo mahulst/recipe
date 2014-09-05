@@ -1,31 +1,3 @@
 <div class="col-md-12">
-	<button class="btn btn-primary" ng-click="addIngredient()">add ingredient</button>
-	<table class="table table-striped">
-		<tr>
-			<th>
-				maat
-			</th>
-			<th>
-				eenheid
-			</th>
-			<th>
-				ingredient
-			</th>
-		</tr>
-		<tr ng-repeat="ingredient in recipe.ingredients">
-			<td>
-				<div class="form-group">
-				    <input type="text" class="form-control" name="name" ng-model="ingredient.unit">
-				</div>
-			</td>
-			<td>
-				<div class="form-group">
-				    <input type="text" class="form-control" name="name" ng-model="ingredient.amount">
-				</div>
-			</td>
-			<td>
-			    <select-autocomplete mh-model="ingredient.ingredient" fetch-result="fetchIngredientsByQuery(query)" />
-			</td>
-		</tr>
-	</table>
+    This is the recepten.add.details view.
 </div>

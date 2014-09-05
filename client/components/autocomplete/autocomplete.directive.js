@@ -32,7 +32,7 @@ angular.module('recipeApp')
           }         
         }
         function selectValue() {
-          console.log(scope.indexOfSelected)
+          console.log(scope.indexOfSelected);
         }
         scope.onKeyUp = function (e) {  
           switch(e.keyCode) {
@@ -67,7 +67,7 @@ angular.module('recipeApp')
           }
         };
 
-      	filter = function (query) {
+      	filter = function () {
           if(lastQuery !== scope.query) {
             scope.fetchedResult = [];
             lastQuery = scope.query;

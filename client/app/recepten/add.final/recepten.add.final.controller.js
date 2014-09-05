@@ -1,6 +1,24 @@
 'use strict';
 
 angular.module('recipeApp')
-  .controller('ReceptenAddFinalCtrl', function ($scope) {
-    $scope.message = 'Hello';
+  .controller('ReceptenAddFinalCtrl', function ($scope, Ingredient) {
+    $scope.recipe = $scope.recipe || {};
+    if(!$scope.recipe.ingredients) {
+        $scope.recipe.ingredients = [];
+    }
+    $scope.fetchIngredientsByQuery = function (query) {
+        var promise;
+        if(query !== '') {
+            var deferred = Ingredient.string({queryString: query});
+            promise = deferred.$promise;
+        } else {
+            //return empty promise
+            promise = {then: function () {}};
+        }
+        return promise;
+    };
+
+    $scope.addIngredient = function () {
+        $scope.recipe.ingredients.push({});
+    };
   });
