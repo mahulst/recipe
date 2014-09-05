@@ -3,7 +3,8 @@
 
         <div class="form-group">
             <label for="steps[{{step.id}}]">Stap {{step.id}}</label>
-            <textarea class="form-control" name="steps[{{step.id}}]" ng-model="step.text"/>
+            <textarea class="form-control" name="steps[{{step.id}}]" ng-model="step.text" ng-keyup="hashCheck(step)"/>
         </div>
+        <ingredients-by-hash></ingredients-by-hash>
     </div>
 </div>
