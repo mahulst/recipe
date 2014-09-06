@@ -5,6 +5,6 @@
             <label for="steps[{{step.id}}]">Stap {{step.id}}</label>
             <textarea class="form-control" name="steps[{{step.id}}]" ng-model="step.text" ng-keyup="hashCheck(step)"/>
         </div>
-        <ingredients-by-hash></ingredients-by-hash>
+        <mentions control="mentionsApi"></mentions>
     </div>
 </div>

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('recipeApp')
-  .controller('ReceptenAddDetailsCtrl', function ($scope) {
+  .controller('ReceptenAddDetailsCtrl', function ($scope, Mentions) {
     $scope.recipe = $scope.recipe || {};
     if(!$scope.recipe.steps) {
         $scope.recipe.steps = [];
@@ -14,6 +14,10 @@ angular.module('recipeApp')
     } else {
         $scope.lastEntry = $scope.recipe.steps[$scope.recipe.steps.length - 1];
     }
+    //object for storing api methods in mentions directive
+    $scope.mentionsApi = {};
+    Mentions.setApiController($scope.mentionsApi);
+    
     $scope.hashCheck = function (step) {
         var hashRegEx = new RegExp(/\B#\w*[a-zA-Z]+\w*/);
 
@@ -24,7 +28,7 @@ angular.module('recipeApp')
     }
 
     function openIngredientPopup (hash) {
-        
+        Mentions.openDialog();
     }
 
     //adding a new step if last step is filled out
