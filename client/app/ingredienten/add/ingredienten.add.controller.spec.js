@@ -14,7 +14,7 @@ describe('Controller: IngredientenAddCtrl', function () {
     $rootScope = $injector.get('$rootScope');
     $httpBackend = $injector.get('$httpBackend');
     $httpBackend.when('GET', '/api/ingredients/model')
-      .respond(model)
+      .respond(model);
     createController = function () {
       return $controller('IngredientenAddCtrl', {
         $scope: $rootScope

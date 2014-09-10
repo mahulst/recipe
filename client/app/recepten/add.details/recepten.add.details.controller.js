@@ -17,22 +17,9 @@ angular.module('recipeApp')
     //object for storing api methods in mentions directive
     $scope.mentionsApi = {};
     Mentions.setApiController($scope.mentionsApi);
-    
-    $scope.hashCheck = function (step) {
-        var hashRegEx = new RegExp(/\B#\w*[a-zA-Z]+\w*/);
-
-        if(step.text.match(hashRegEx)){
-            var hashCheck = step.text.match(hashRegEx)
-            openIngredientPopup(hashCheck[0]);
-        }
-    }
-
-    function openIngredientPopup (hash) {
-        Mentions.openDialog();
-    }
 
     //adding a new step if last step is filled out
-    $scope.$watch('lastEntry.text', function (newVal, oldVal) {
+    $scope.$watch('lastEntry.text', function (newVal) {
         if(newVal !== '') {
             $scope.lastEntry = {
                 id: $scope.recipe.steps.length,
