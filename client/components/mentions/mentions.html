@@ -1,5 +1,10 @@
 <div class="mention-container">
-<textarea   class="form-control" 
-			name="steps[{{step.id}}]" 
-			ng-model="step.text" />
+    <textarea   class="form-control"
+                name="steps[{{step.id}}]"
+                ng-model="step.text" />
+    <div class="tail" ng-show="visible" ng-style="{left: position.x,top: position.y}">
+        <ul>
+            <li ng-class="{active: $index == selectIndex}" ng-repeat="item in result">{{item.name}}</li>
+        </ul>
+    </div>
 </div>

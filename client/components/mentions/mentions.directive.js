@@ -11,23 +11,35 @@ angular.module('recipeApp')
       },
       link: function (scope, element) {
         var textarea = element.find('textarea');
+        textarea.keydown(function (e) {
+            switch(e.keyCode) {
+                //up
+                case 38:
+                    scope.selectUp();
+                    e.preventDefault();
+                    scope.$digest();
+                    break;
+                //down
+                case 40:
+                    scope.selectDown();
+                    e.preventDefault();
+                    scope.$digest();
+                    break;
+            }
+        });
         textarea.keyup(function (e) {
           var hash = scope.hashCheck(angular.element(e.target).val()),
-            position,
-            offset;
+            position;
+
           if(hash) {
-            scope.setVisible(true);
             position = angular.element(e.target).textareaHelper('caretPos');
-            console.log(position, offset);
-            scope.setPosition(position.left , position.top);
+            scope.open(position);
+            scope.query(hash);
           }
           else {
-            scope.setVisible(false);
+            scope.close();
           }
         });
-        var test = $compile('<div class="tail" ng-show="visible" ng-style="{left: position.x,top: position.y}"> dit is een test </div>')(scope);
-        var popup = textarea.after(test);
-
       }
     };
   });
