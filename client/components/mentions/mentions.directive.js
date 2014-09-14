@@ -7,7 +7,7 @@ angular.module('recipeApp')
       restrict: 'E',
       controller: 'MentionsCtrl',
       scope: {
-        control: '='
+        step: '=model'
       },
       link: function (scope, element) {
         var textarea = element.find('textarea');
@@ -24,6 +24,14 @@ angular.module('recipeApp')
                     scope.selectDown();
                     e.preventDefault();
                     scope.$digest();
+                    break;
+
+                case 32:
+                case 13:
+                    if(scope.visible) {
+                        scope.selectResult();
+                        e.preventDefault();
+                    }
                     break;
             }
         });
@@ -43,3 +51,25 @@ angular.module('recipeApp')
       }
     };
   });
+
+
+angular.module('recipeApp')
+    .directive('test', ['$sce', function($sce) {
+    return {
+        restrict: 'A', // only activate on element attribute
+        require: '?ngModel', // get a hold of NgModelController
+        link: function(scope, element, attrs, ngModel) {
+            if (!ngModel) return; // do nothing if no ng-model
+
+            //format text going to user (model to view)
+            ngModel.$formatters.push(function(value) {
+                return value.toUpperCase();
+            });
+
+            //format text from the user (view to model)
+            ngModel.$parsers.push(function(value) {
+                return value.toLowerCase();
+            });
+        }
+    };
+}]);
