@@ -54,7 +54,7 @@ angular.module('recipeApp')
 
 
 angular.module('recipeApp')
-    .directive('test', ['$sce', function($sce) {
+    .directive('test', function($sce, $filter) {
     return {
         restrict: 'A', // only activate on element attribute
         require: '?ngModel', // get a hold of NgModelController
@@ -63,13 +63,12 @@ angular.module('recipeApp')
 
             //format text going to user (model to view)
             ngModel.$formatters.push(function(value) {
-                return value.toUpperCase();
+                scope;
+                var text = $filter('printf')(value, scope.step.ingredients);
+                return text;
             });
 
-            //format text from the user (view to model)
-            ngModel.$parsers.push(function(value) {
-                return value.toLowerCase();
-            });
+
         }
     };
-}]);
+});
