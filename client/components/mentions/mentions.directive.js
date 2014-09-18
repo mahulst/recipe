@@ -63,7 +63,6 @@ angular.module('recipeApp')
 
             //format text going to user (model to view)
             ngModel.$formatters.push(function(value) {
-                scope;
                 var text = $filter('printf')(value, scope.step.ingredients);
                 return text;
             });
