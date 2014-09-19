@@ -1,6 +1,6 @@
 <div class="form-group">
 	<input type="hidden" ng-model="a"/>
-	<input ng-keyup="onKeyUp($event)" ng-model="query" class="form-control mh-ac-search-input"/>
+	<input ng-keyup="onKeyUp($event)" ng-model="query" class="form-control mh-ac-search-input" ng-blur="onBlur($event)"/>
 	<div class="mh-ac-result-box" ng-show="showResult">
 		<!-- initially set first element as selected -->
 		<div ng-class="{selected: indexOfSelected === $index}" ng-repeat="item in fetchedResult">

@@ -10,7 +10,7 @@ angular.module('recipeApp')
       	fetchResult: '&',
         mhModel: '='
       },
-      link: function (scope) {
+      link: function (scope, element) {
         var lastQuery = '',
           filter;
         scope.indexOfSelected = 0;
@@ -32,7 +32,9 @@ angular.module('recipeApp')
           }         
         }
         function selectValue() {
-          console.log(scope.indexOfSelected);
+            scope.query = scope.fetchedResult[scope.indexOfSelected].name;
+            scope.mhModel = scope.fetchedResult[scope.indexOfSelected];
+            close();
         }
         scope.onKeyUp = function (e) {  
           switch(e.keyCode) {
@@ -79,8 +81,11 @@ angular.module('recipeApp')
       	};
 
       	scope.onBlur = function () {
-      		scope.showResult = false;
+            close();
       	};
+        function close () {
+            scope.showResult = false;
+        }
       }
     };
   });
