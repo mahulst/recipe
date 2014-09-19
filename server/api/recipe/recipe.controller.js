@@ -28,8 +28,10 @@ exports.create = function(req, res) {
   var recipe = req.body,
     ingredientsArr = [];
 
+  //parse ingredients
   recipe.ingredients.forEach(function (ingredient) {
       ingredient.ingredient = ingredient.ingredient._id;
+      console.log(ingredient);
       ingredientsArr.push(ingredient);
   });
     recipe.ingredients = ingredientsArr;
