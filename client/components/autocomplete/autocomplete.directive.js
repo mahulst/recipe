@@ -17,6 +17,9 @@ angular.module('recipeApp')
       	scope.showResult = false;
         scope.selectedValue = null;
         scope.fetchedResult = [];
+
+        initData();
+
         function incrementIndexOfSelected () { 
           if(scope.indexOfSelected >= scope.fetchedResult.length - 1){
             scope.indexOfSelected = 0;
@@ -95,6 +98,11 @@ angular.module('recipeApp')
         }
         function getSelectedIngredient () {
             return scope.fetchedResult[scope.indexOfSelected];
+        }
+        function initData () {
+          if(scope.mhModel) {
+            scope.query = scope.mhModel.name;
+          }
         }
       }
     };

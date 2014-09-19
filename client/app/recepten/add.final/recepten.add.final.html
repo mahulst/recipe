@@ -16,12 +16,12 @@
         <tr ng-repeat="ingredient in recipe.ingredients">
             <td>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="name" ng-model="ingredient.unit">
+                    <input type="text" class="form-control" name="name" ng-model="ingredient.amount">
                 </div>
             </td>
             <td>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="name" ng-model="ingredient.amount">
+                    <input type="text" class="form-control" name="name" ng-model="ingredient.unit">
                 </div>
             </td>
             <td>
@@ -29,4 +29,9 @@
             </td>
         </tr>
     </table>
+    <div class="col-xs-6 col-xs-offset-3">
+        <a ng-click="saveRecipe()" class="btn btn-block btn-info">
+           Save recipe
+        </a>
+    </div>
 </div>

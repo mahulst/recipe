@@ -25,6 +25,14 @@ exports.show = function(req, res) {
 
 // Creates a new recipe in the DB.
 exports.create = function(req, res) {
+  var recipe = req.body,
+    ingredientsArr = [];
+
+  recipe.ingredients.forEach(function (ingredient) {
+      ingredient.ingredient = ingredient.ingredient._id;
+      ingredientsArr.push(ingredient);
+  });
+    recipe.ingredients = ingredientsArr;
   Recipe.create(req.body, function(err, recipe) {
     if(err) { return handleError(res, err); }
     return res.json(201, recipe);
