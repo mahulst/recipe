@@ -1,7 +1,9 @@
 <div class="col-md-12">
     <div ng-repeat="recipe in recipes" class="" >
-        {{ recipe.name }}
+        <a ui-sref="recepten.view({id: recipe._id})" >{{ recipe.name }}</a>
     </div>
 </div>
-
+<div class="col-md-12">
+    <div ui-view></div>
+</div>
 <a ui-sref="addRecipe.basic">add</a>
