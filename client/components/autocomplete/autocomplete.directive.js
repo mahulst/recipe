@@ -31,19 +31,25 @@ angular.module('recipeApp')
             scope.indexOfSelected -= 1;
           }         
         }
-        function selectValue() {
-            scope.query = scope.fetchedResult[scope.indexOfSelected].name;
-            scope.mhModel = scope.fetchedResult[scope.indexOfSelected];
+        function selectValue(ingredient) {
+            if (ingredient) {
+                scope.query = ingredient.name;
+                scope.mhModel = ingredient;
+            } else {
+                scope.query = '';
+                scope.mhModel = null;
+            }
             close();
         }
-        scope.onKeyUp = function (e) {  
+        scope.onKeyUp = function (e) {
+            var ingredient = getSelectedIngredient();
           switch(e.keyCode) {
             //left
             case 37:
             break;
             //up
             case 38:
-              if(scope.fetchedResult[scope.indexOfSelected]) {
+              if(ingredient) {
                 decrementIndexOfSelected();
               }
             break;
@@ -52,14 +58,14 @@ angular.module('recipeApp')
             break;
             //down
             case 40:
-              if(scope.fetchedResult[scope.indexOfSelected]) {
+              if(ingredient) {
                 incrementIndexOfSelected();
               }
             break;
             //enter
             case 13:
-              if(scope.fetchedResult[scope.indexOfSelected]) {
-                selectValue();
+              if(ingredient) {
+                selectValue(ingredient);
               }
             break;
             default:
@@ -81,10 +87,14 @@ angular.module('recipeApp')
       	};
 
       	scope.onBlur = function () {
+            selectValue(getSelectedIngredient());
             close();
       	};
         function close () {
             scope.showResult = false;
+        }
+        function getSelectedIngredient () {
+            return scope.fetchedResult[scope.indexOfSelected];
         }
       }
     };
