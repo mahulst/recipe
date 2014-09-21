@@ -1,6 +1,6 @@
 <div class="col-md-12">
     <div ng-repeat="recipe in recipes" class="" >
-        <a ui-sref="recepten.view({id: recipe._id})" >{{ recipe.name }}</a>
+        <a ui-sref="recepten.view({id: recipe._id})" >{{ recipe.name }}</a> <a ng-click="addToNewGroceryList(recipe)">add to new</a>
     </div>
 </div>
 <div class="col-md-12">
