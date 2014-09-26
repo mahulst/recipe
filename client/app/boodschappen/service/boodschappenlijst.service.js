@@ -5,12 +5,16 @@ angular.module('recipeApp')
         var currentList = createNewList();
 
         this.addRecipeToList = function (recipe) {
-            currentList.push(recipe);
+            currentList.recepten.push(recipe);
+            console.log(currentList);
         };
         function createNewList () {
             return {
                 recepten: [],
                 date: new Date()
             }
+        }
+        this.getList = function () {
+            return currentList;
         }
   });

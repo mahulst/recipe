@@ -1,3 +1,11 @@
 <div class="col-md-12">
-This is the boodschappen.view view.
+    <div class="col-md-6">
+        <h1>ingredienten</h1>
+    </div>
+    <div class="col-md-6">
+        <h1>recepten</h1>
+        <div ng-repeat="recipe in currentList.recepten track by $index">
+            {{recipe}}
+        </div>
+    </div>
 </div>
