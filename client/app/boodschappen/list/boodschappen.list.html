@@ -1,7 +1,7 @@
 <div class="col-md-12">
 This is the boodschappen.list view.
-<a ui-sref="boodschappen.view({id:1})">lijstje 1</a>
-<a ui-sref="boodschappen.add">add</a>
+    <a ng-repeat="list in lists" ui-sref="boodschappen.view({id:list._id})">{{list.name}}</a>
+    <a ui-sref="boodschappen.view({id:'new'})">new list</a>
 </div>
 <div class="col-md-12" ui-view ng-show="showDetail"></div>
 

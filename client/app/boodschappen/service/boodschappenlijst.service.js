@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('recipeApp')
-  .service('BoodschappenLijst', function BoodschappenLijst() {
+  .service('BoodschappenLijst', function BoodschappenLijst( $resource) {
+        var listResource = $resource('/api/grocery-lists/:id', {id: '@id'});
         var currentList = createNewList();
 
         this.addRecipeToList = function (recipe) {
@@ -14,7 +15,16 @@ angular.module('recipeApp')
                 date: new Date()
             }
         }
-        this.getList = function () {
+        this.getCurrentList = function () {
             return currentList;
+        }
+        this.get = function (obj) {
+            return listResource.get({id: obj.id});
+        }
+        this.saveList = function (list) {
+            return listResource.$save(list);
+        }
+        this.query = function () {
+            return listResource.query();
         }
   });
