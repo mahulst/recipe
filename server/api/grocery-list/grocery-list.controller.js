@@ -5,19 +5,31 @@ var GroceryList = require('./grocery-list.model');
 
 // Get list of grocery-lists
 exports.index = function(req, res) {
-  GroceryList.find(function (err, groceryList) {
-    if(err) { return handleError(res, err); }
-    return res.json(200, groceryList);
-  });
+  GroceryList.find({})
+      .populate('recepten')
+      .exec(function (err, populatedGrocereLists) {
+          if(err) { return handleError(res, err); }
+          return res.json(200, populatedGrocereLists);
+      });
 };
 
 // Get a single grocery-list
 exports.show = function(req, res) {
-  GroceryList.findById(req.params.id, function (err, groceryList) {
-    if(err) { return handleError(res, err); }
-    if(!groceryList) { return res.send(404); }
-    return res.json(groceryList);
-  });
+    GroceryList.findById(req.params.id)
+        .populate('recepten')
+        .exec(function (err, groceryList) {
+            var options = {
+                path: 'recepten.ingredients.ingredient',
+                model: 'Ingredient'
+            };
+            GroceryList.populate(groceryList, options, function (err, groceryList) {
+
+                if(err) { return handleError(res, err); }
+                if(!groceryList) { return res.send(404); }
+                return res.json(groceryList);
+
+            });
+        });
 };
 
 // Creates a new grocery-list in the DB.

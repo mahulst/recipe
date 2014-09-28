@@ -11,11 +11,13 @@ angular.module('recipeApp')
     }
     if(getById) {
         $scope.list = BoodschappenLijst.get({id: $stateParams.id});
-
+        $scope.list.$promise.then(function (){
+            $scope.ingredients = listIngredients();
+        });
     } else {
         $scope.list = BoodschappenLijst.getCurrentList();
+        $scope.ingredients = listIngredients();
     }
-    $scope.ingredients = listIngredients();
     function listIngredients() {
         var obj = {};
         angular.forEach($scope.list.recepten, function (recept) {
