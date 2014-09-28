@@ -4,12 +4,12 @@ angular.module('recipeApp')
   .controller('BoodschappenViewCtrl', function ($scope, $stateParams, BoodschappenLijst) {
     //only show detail view when list is selected
     $scope.showDetail = false;
-    var getById = false;
+    $scope.getById = false;
     if($stateParams.id) {
     	$scope.showDetail = true;
-        getById = $stateParams.id !== 'new';
+        $scope.getById = $stateParams.id !== 'new';
     }
-    if(getById) {
+    if($scope.getById) {
         $scope.list = BoodschappenLijst.get({id: $stateParams.id});
         $scope.list.$promise.then(function (){
             $scope.ingredients = listIngredients();
@@ -34,5 +34,9 @@ angular.module('recipeApp')
             });
         });
         return obj;
+    };
+
+    $scope.addNewList = function (list) {
+        BoodschappenLijst.saveList(list);
     };
   });

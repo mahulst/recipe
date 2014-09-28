@@ -22,7 +22,7 @@ angular.module('recipeApp')
             return listResource.get({id: obj.id});
         }
         this.saveList = function (list) {
-            return listResource.$save(list);
+            return listResource.save(list);
         }
         this.query = function () {
             return listResource.query();
