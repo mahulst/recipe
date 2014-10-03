@@ -11,8 +11,8 @@ describe('Service: BoodschappenLijst', function () {
       BoodschappenLijst = _BoodschappenLijst_;
   }));
 
-  it('should do something', function () {
-    expect(!!BoodschappenLijst).to.be.true;
+  it('should create an empty list on the scope named currentList', function () {
+    expect(BoodschappenLijst.currentList).to.be.truthy;
   });
 
 });
