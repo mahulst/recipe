@@ -15,8 +15,9 @@ describe('Controller: ReceptenAddFinalCtrl', function () {
     }));
 
     it('should have function to fetch ingredients by query', function () {
-       // var controller = createController(),
         var response = [{},{},{},{},{}];
+        createController();
+
         $httpBackend.expectGET('/api/ingredients/string/abc')
             .respond(response);
         $rootScope.fetchIngredientsByQuery('abc');
@@ -24,7 +25,7 @@ describe('Controller: ReceptenAddFinalCtrl', function () {
     });
 
     it('should add an empty ingredient to ingredients array' , function () {
-        //var controller = createController();
+        createController();
 
         expect($rootScope.recipe.ingredients.length).to.equal(0);
         //add ingredient

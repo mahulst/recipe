@@ -23,7 +23,7 @@ describe('Controller: IngredientenAddCtrl', function () {
   }));
 
   it('should have an object representing the ingredient model', function () {
-    //var controller = createController();
+    createController();
     $httpBackend.expectGET('/api/ingredients/model');
     $httpBackend.flush();
     expect($rootScope.ingredientModel).to.be.an('object');
@@ -32,7 +32,7 @@ describe('Controller: IngredientenAddCtrl', function () {
   it('should have a method for adding new ingredients', function () {
     var ingredient = {name: 'Apple'};
     //build controller
-    //var controller = createController();
+    createController();
     $httpBackend.flush();
 
     $rootScope.saveIngredient(ingredient);

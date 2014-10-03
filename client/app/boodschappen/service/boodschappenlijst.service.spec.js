@@ -12,7 +12,7 @@ describe('Service: BoodschappenLijst', function () {
   }));
 
   it('should do something', function () {
-    expect(!!BoodschappenLijst).toBe(true);
+    expect(!!BoodschappenLijst).to.be.true;
   });
 
 });

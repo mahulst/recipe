@@ -36,7 +36,7 @@ describe('Controller: IngredientenListCtrl', function () {
   it('should add ingredients to scope', function () {
     $httpBackend.expectGET('/api/ingredients');
 
-   // var controller = createController();
+    createController();
     $httpBackend.flush();   
 
     expect($rootScope.ingredients).to.be.an('array'); 
@@ -44,7 +44,7 @@ describe('Controller: IngredientenListCtrl', function () {
   });
   
   it('should delete ingredients per function', function () {
-   // var controller = createController();
+    createController();
     $httpBackend.flush();   
     // $httpBackend.flush();
     expect($rootScope.ingredients.length).to.equal(3);

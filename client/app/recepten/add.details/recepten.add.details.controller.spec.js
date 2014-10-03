@@ -16,11 +16,10 @@ describe('Controller: ReceptenAddDetailsCtrl', function () {
     }));
     // Initialize the controller and a mock scope
     beforeEach(inject(function () {
-//        var controller = createController();
+       createController();
     }));
 
     it('should create new step if last step is filled', function () {
-       // var controller = createController();
         expect($rootScope.recipe.steps.length).to.equal(1);
         $rootScope.lastEntry.text = 'Test';
         $rootScope.$apply();
