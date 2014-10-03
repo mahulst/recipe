@@ -43,7 +43,6 @@ exports.create = function(req, res) {
         recipeArr.push(recept);
     });
     list.recepten = recipeArr;
-    console.log(list)
   GroceryList.create(list, function(err, groceryList) {
     if(err) { return handleError(res, err); }
     return res.json(201, groceryList);

@@ -11,7 +11,7 @@ angular.module('recipeApp')
             var ingredientAlreadyInArray = $scope.recipe.ingredients.filter(function( obj ) {
                 return obj.ingredient._id === ingredient._id;
             });
-           if (ingredientAlreadyInArray) {
+           if (ingredientAlreadyInArray.length === 0) {
                $scope.recipe.ingredients.push({ingredient:ingredient});
            }
         });
