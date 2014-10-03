@@ -6,13 +6,13 @@ describe('Directive: inputRow', function () {
   beforeEach(module('recipeApp'));
   beforeEach(module('components/form-from-model/inputRow/formInput.html'));
 
-  var element, scope;
+  var scope;
 
   beforeEach(inject(function ($rootScope) {
     scope = $rootScope.$new();
   }));
 
-  it('should make hidden element visible', inject(function ($compile) {
+  it('should make hidden element visible', inject(function () {
     
   }));
 });

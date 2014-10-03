@@ -127,6 +127,9 @@ module.exports = function (grunt) {
         '!<%= yeoman.client %>/{app,components}/**/*.mock.js'
       ],
       test: {
+        options: {
+          jshintrc: 'server/.jshintrc'
+        },
         src: [
           '<%= yeoman.client %>/{app,components}/**/*.spec.js',
           '<%= yeoman.client %>/{app,components}/**/*.mock.js'

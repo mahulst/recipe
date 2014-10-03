@@ -20,7 +20,7 @@ describe('Controller: ReceptenAddDetailsCtrl', function () {
     }));
 
     it('should create new step if last step is filled', function () {
-        var controller = createController();
+       // var controller = createController();
         expect($rootScope.recipe.steps.length).to.equal(1);
         $rootScope.lastEntry.text = 'Test';
         $rootScope.$apply();

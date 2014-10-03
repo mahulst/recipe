@@ -13,7 +13,7 @@ describe('Directive: autocomplete', function () {
     getKeyUpEvent = function (keyCode) {
       var e = {
         keyCode: keyCode
-      }
+      };
       return e;
     };
   }));

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('recipeApp')
-  .directive('mentions', function ($compile) {
+  .directive('mentions', function () {
     return {
       templateUrl: 'components/mentions/mentions.html',
       restrict: 'E',
@@ -59,8 +59,10 @@ angular.module('recipeApp')
         restrict: 'A', // only activate on element attribute
         require: '?ngModel', // get a hold of NgModelController
         link: function(scope, element, attrs, ngModel) {
-            if (!ngModel) return; // do nothing if no ng-model
-
+            // do nothing if no ng-model
+            if (!ngModel){
+                return;
+            }
             //format text going to user (model to view)
             ngModel.$formatters.push(function(value) {
                 var text = $filter('printf')(value, scope.step.ingredients);

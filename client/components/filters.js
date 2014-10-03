@@ -1,3 +1,4 @@
+'use strict';
 angular.module('recipeApp')
     .filter('printf', function() {
         return function(input, arr) {

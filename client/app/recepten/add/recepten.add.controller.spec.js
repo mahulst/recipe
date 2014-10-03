@@ -18,7 +18,7 @@ describe('Controller: ReceptenAddCtrl', function () {
   }));
 
   it('should have function to save new recipe', function () {
-    var controller = createController();
+    //var controller = createController();
     $httpBackend.expect('POST', '/api/recipes/1')
       .respond(200);
     $rootScope.saveRecipe({id: 1});

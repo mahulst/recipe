@@ -8,7 +8,7 @@ angular.module('recipeApp')
     $scope.position = {
         x: 10,
         y: 100
-    }
+    };
     $scope.open = function (position) {
         if($scope.visible !== true){
             $scope.selectIndex = 0;
@@ -20,7 +20,7 @@ angular.module('recipeApp')
     $scope.close = function () {
         $scope.visible = false;
         $scope.$digest();
-    }
+    };
 
     $scope.query = function (hash) {
         var query = hash.substring(1, hash.length);

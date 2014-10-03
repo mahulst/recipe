@@ -8,8 +8,27 @@
   "newcap": true,
   "noarg": true,
   "regexp": true,
+  "expr": true,
   "undef": true,
   "smarttabs": true,
   "asi": true,
-  "debug": true
+  "debug": true,
+    "globals": {
+        "jQuery": true,
+        "angular": true,
+        "console": true,
+        "$": true,
+        "_": true,
+        "moment": true,
+        "describe": true,
+        "beforeEach": true,
+        "module": true,
+        "inject": true,
+        "it": true,
+        "expect": true,
+        "browser": true,
+        "element": true,
+        "by": true,
+        "before": true
+    }
 }

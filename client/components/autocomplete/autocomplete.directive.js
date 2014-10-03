@@ -10,9 +10,20 @@ angular.module('recipeApp')
       	fetchResult: '&',
         mhModel: '='
       },
-      link: function (scope, element) {
+      link: function (scope) {
         var lastQuery = '',
           filter;
+        function close () {
+          scope.showResult = false;
+        }
+        function getSelectedIngredient () {
+          return scope.fetchedResult[scope.indexOfSelected];
+        }
+        function initData () {
+          if(scope.mhModel) {
+              scope.query = scope.mhModel.name;
+          }
+        }
         scope.indexOfSelected = 0;
       	scope.showResult = false;
         scope.selectedValue = null;
@@ -93,17 +104,7 @@ angular.module('recipeApp')
             selectValue(getSelectedIngredient());
             close();
       	};
-        function close () {
-            scope.showResult = false;
-        }
-        function getSelectedIngredient () {
-            return scope.fetchedResult[scope.indexOfSelected];
-        }
-        function initData () {
-          if(scope.mhModel) {
-            scope.query = scope.mhModel.name;
-          }
-        }
+
       }
     };
   });
