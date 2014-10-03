@@ -31,7 +31,6 @@ exports.create = function(req, res) {
   //parse ingredients
   recipe.ingredients.forEach(function (ingredient) {
       ingredient.ingredient = ingredient.ingredient._id;
-      console.log(ingredient);
       ingredientsArr.push(ingredient);
   });
     recipe.ingredients = ingredientsArr;

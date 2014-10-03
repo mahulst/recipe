@@ -34,7 +34,17 @@ exports.show = function(req, res) {
 
 // Creates a new grocery-list in the DB.
 exports.create = function(req, res) {
-  GroceryList.create(req.body, function(err, groceryList) {
+    var list = req.body,
+        recipeArr = [];
+
+    //parse ingredients
+    list.recepten.forEach(function (recept) {
+        recept = recept._id;
+        recipeArr.push(recept);
+    });
+    list.recepten = recipeArr;
+    console.log(list)
+  GroceryList.create(list, function(err, groceryList) {
     if(err) { return handleError(res, err); }
     return res.json(201, groceryList);
   });
