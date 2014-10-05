@@ -14,4 +14,7 @@
     <div ng-hide="getById">
         <a ng-click="addNewList(list)">save list</a>
     </div>
+    <div ng-show="getById">
+        <a ui-sref="boodschappen.shopping({id:list._id})">got to shopping list</a>
+    </div>
 </div>

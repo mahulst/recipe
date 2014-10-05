@@ -11,6 +11,10 @@ var GroceryListSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Recipe'
   }],
+  gotIngredients: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Ingredient'
+  }],
   active: Boolean
 });
 

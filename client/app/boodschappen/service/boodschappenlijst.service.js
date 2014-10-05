@@ -29,4 +29,20 @@ angular.module('recipeApp')
         this.query = function () {
             return listResource.query();
         };
+        this.listIngredients = function (list) {
+            var obj = {};
+            angular.forEach(list.recepten, function (recept) {
+                angular.forEach(recept.ingredients, function (ingredient){
+                    if(!ingredient) {
+                        return;
+                    }
+                    if(!obj[ingredient.ingredient._id]){
+                        obj[ingredient.ingredient._id] = {ingredient: ingredient.ingredient, amount: ingredient.amount};
+                    } else {
+                        obj[ingredient.ingredient._id].amount += ingredient.amount;
+                    }
+                });
+            });
+            return obj;
+        }
   });
