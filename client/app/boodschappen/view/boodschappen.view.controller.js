@@ -37,6 +37,7 @@ angular.module('recipeApp')
 
 
     $scope.addNewList = function (list) {
+        list.date = new Date();
         BoodschappenLijst.saveList(list);
     };
   });

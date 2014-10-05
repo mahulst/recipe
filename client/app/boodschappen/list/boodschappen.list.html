@@ -1,7 +1,15 @@
 <div class="col-md-12">
 This is the boodschappen.list view.
-    <a ng-repeat="list in lists" ui-sref="boodschappen.view({id:list._id})">{{list.name}}</a>
-    <a ui-sref="boodschappen.view({id:'new'})">new list</a>
+    <h2>Current List</h2>
+    <div>
+        <a ui-sref="boodschappen.view({id:'new'})">current list</a>
+    </div>
+    <h2>Saved Lists
+    </h2>
+    <div ng-repeat="list in lists | orderBy:'date':'true' " >
+        <a ui-sref="boodschappen.view({id:list._id})">{{list.date | date: 'yyyy MM dd HH mm'}}</a>
+
+    </div>
 </div>
 <div class="col-md-12" ui-view ng-show="showDetail"></div>
 

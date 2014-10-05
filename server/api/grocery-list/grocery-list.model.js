@@ -5,6 +5,7 @@ var mongoose = require('mongoose'),
 
 var GroceryListSchema = new Schema({
   name: String,
+  date: Date,
   info: String,
   recepten: [{
         type: Schema.Types.ObjectId,
