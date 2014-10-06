@@ -47,13 +47,13 @@ angular.module('recipeApp')
         };
 
         this.getNeededIngredients = function (list) {
-            var neededIngredients = [];
-            angular.forEach(list.recepten, function (recept) {
-               angular.forEach(recept.ingredients, function (ingredient) {
-                   if(list.gotIngredients.indexOf(ingredient) === -1) {
-                        neededIngredients.push(ingredient);
-                   }
-               });
+            var neededIngredients = [],
+                ingredientsList = this.listIngredients(list);
+
+            angular.forEach(ingredientsList, function (ingredient) {
+               if(list.gotIngredients.indexOf(ingredient) === -1) {
+                    neededIngredients.push(ingredient);
+               }
             });
             return neededIngredients;
         };

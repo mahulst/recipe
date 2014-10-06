@@ -25,10 +25,13 @@ describe('Controller: BoodschappenShoppingCtrl', function () {
           response = {
               recepten: [{
                   ingredients: [{
-                      a:'b'
+                      ingredient: {
+                          a: 'b',
+                          _id: 'abc'
+                      }
                   }]
               }],
-              gotIngredients: [{a:'b'},{},{},{},{}]
+              gotIngredients: [{ingredient: {a:'b', _id: 'abc'}},{ingredient:{_id: 'abc'}},{ingredient:{_id: 'abc'}},{ingredient:{_id: 'abc'}},{ingredient:{_id: 'abc'}}]
           };
       $httpBackend.expectGET('/api/grocery-lists/1').respond(response);
 

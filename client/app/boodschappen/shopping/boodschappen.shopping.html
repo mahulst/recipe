@@ -3,11 +3,19 @@ This is the boodschappen.shopping view.
 
 
     <div>
+        <ul>
+            <li data-ng-repeat="ingredient in doneArray">
+                {{ingredient.name}}
+            </li>
+        </ul>
         {{doneArray}}
     </div>
 
     <div>
-        {{neededArray}}
+
+        <li data-ng-repeat="ingredient in neededArray">
+            {{ingredient.ingredient.name}}
+        </li>
     </div>
 
 </div>
