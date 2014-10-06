@@ -21,11 +21,20 @@ describe('Controller: BoodschappenShoppingCtrl', function () {
     }));
 
   it('should initialize should split the array of ingredients into two arrays: done and still needed', function () {
-      var controller = createController();
+      var controller = createController(),
+          response = {
+              recepten: [{
+                  ingredients: [{
+                      a:'b'
+                  }]
+              }],
+              gotIngredients: [{a:'b'},{},{},{},{}]
+          };
+      $httpBackend.expectGET('/api/grocery-lists/1').respond(response);
 
+      $httpBackend.flush();
 
       expect($rootScope.doneArray.length).to.equal(5);
-
-      expect($rootScope.neededArray.length).to.equal(5);
+      expect($rootScope.neededArray.length).to.equal(1);
   });
 });

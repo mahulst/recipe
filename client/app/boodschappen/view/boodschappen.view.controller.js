@@ -20,7 +20,6 @@ angular.module('recipeApp')
         $scope.ingredients = BoodschappenLijst.listIngredients($scope.list);
     }
 
-
     $scope.addNewList = function (list) {
         list.date = new Date();
         BoodschappenLijst.saveList(list);
