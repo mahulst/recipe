@@ -134,7 +134,20 @@ module.exports = function (grunt) {
           '<%= yeoman.client %>/{app,components}/**/*.spec.js',
           '<%= yeoman.client %>/{app,components}/**/*.mock.js'
         ]
-      }
+      },
+      jenkins:  {
+        options: {
+            jshintrc: 'server/.jshintrc',
+            reporter: 'checkstyle',
+            reporterOutput: 'build/checkstyle-result.xml'
+        },
+        src: [
+            '<%= yeoman.client %>/{app,components}/**/*.js',
+            '!<%= yeoman.client %>/{app,components}/**/*.spec.js',
+            '!<%= yeoman.client %>/{app,components}/**/*.mock.js'
+
+        ]
+    }
     },
 
     // Empties folders to start fresh
@@ -393,6 +406,19 @@ module.exports = function (grunt) {
       unit: {
         configFile: 'karma.conf.js',
         singleRun: true
+      },
+      continuous: {
+          configFile: 'karma.conf.js',
+          singleRun: true,
+          browsers: ['PhantomJS'],
+          reporters: ['dots', 'junit', 'coverage'],
+          junitReporter: {
+              outputFile: 'build/test-results.xml'
+          },
+          coverageReporter: {
+              type: 'html',
+              dir: 'coverage/build/'
+          }
       }
     },
 
@@ -604,7 +630,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'injector:less', 
+    'injector:less',
     'concurrent:dist',
     'injector',
     'bowerInstall',
@@ -626,4 +652,26 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+    grunt.registerTask('continuous', function (target) {
+        if(target === 'production') {
+            return grunt.task.run([
+                'karma:continuous',
+                'jshint:jenkins',
+                'build'
+            ]);
+        } else if(target === 'acceptance') {
+            return grunt.task.run([
+                'karma:continuous',
+                'jshint:jenkins',
+                'build'
+            ]);
+        } else {
+            return grunt.task.run([
+                'karma:continuous',
+                'jshint:jenkins',
+            ]);
+        }
+
+    });
 };
