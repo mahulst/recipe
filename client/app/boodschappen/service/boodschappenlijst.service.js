@@ -17,7 +17,7 @@ angular.module('recipeApp')
             });
             return false;
         }
-        listResource = $resource('/api/grocery-lists/:id', {id: '@id'});
+        listResource = $resource('/api/grocery-lists/:id', {id: '@_id'});
         currentList = createNewList();
 
         this.addRecipeToList = function (recipe) {

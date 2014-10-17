@@ -3,7 +3,6 @@
  */
 
 'use strict';
-
 var GroceryList = require('./grocery-list.model');
 
 exports.register = function(socket) {
@@ -16,7 +15,20 @@ exports.register = function(socket) {
 }
 
 function onSave(socket, doc, cb) {
-  socket.emit('grocery-list:save', doc);
+    //TODO: duplicate function. make function that returns a promise that can be used oin both locations
+    GroceryList.findById(doc._id)
+        .populate('recepten gotIngredients')
+        .exec(function (err, groceryList) {
+            var options = {
+                path: 'recepten.ingredients.ingredient',
+                model: 'Ingredient'
+            };
+            GroceryList.populate(groceryList, options, function (err, groceryList) {
+
+                socket.emit('grocery-list:save', groceryList);
+
+            });
+        });
 }
 
 function onRemove(socket, doc, cb) {

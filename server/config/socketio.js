@@ -19,10 +19,6 @@ function onConnect(socket) {
 
   // Insert sockets below
   require('../api/grocery-list/grocery-list.socket').register(socket);
-  require('../api/tag/tag.socket').register(socket);
-  require('../api/ingredient/ingredient.socket').register(socket);
-  require('../api/recipe/recipe.socket').register(socket);
-  require('../api/thing/thing.socket').register(socket);
 }
 
 module.exports = function (socketio) {

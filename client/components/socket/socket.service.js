@@ -51,6 +51,11 @@ angular.module('recipeApp')
          * Syncs item creation/updates on 'model:save'
          */
         socket.on(modelName + ':save', function (item) {
+          //specific case for grocery list. it is not a simple array. TODO: better way for socket interface to handle these cases
+          if(modelName === "grocery-list") {
+              cb(item);
+              return;
+          }
           var oldItem = _.find(array, {_id: item._id});
           var index = array.indexOf(oldItem);
           var event = 'created';
