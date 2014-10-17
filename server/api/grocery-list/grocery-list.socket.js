@@ -32,5 +32,6 @@ function onSave(socket, doc, cb) {
 }
 
 function onRemove(socket, doc, cb) {
-  socket.emit('grocery-list:remove', doc);
+    //TODO: remove emitter causes a flicker in the ui. Empty thing gets rendered, than the new thing gets rendered
+  //socket.emit('grocery-list:remove', doc);
 }

@@ -38,7 +38,9 @@ angular.module('recipeApp')
             //sync arrays
             list.gotIngredients = $scope.doneArray;
 
-            list.$save();
+            list.$save().then(function () {
+                debugger;
+            });
         };
         $scope.removeIngredient = function (ingredient) {
             var index =  ingredientInList($scope.doneArray, ingredient);
