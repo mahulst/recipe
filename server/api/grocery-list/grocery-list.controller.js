@@ -12,9 +12,9 @@ function getPopulatedList (id, res) {
                 model: 'Ingredient'
             };
             GroceryList.populate(groceryList, options, function (err, groceryList) {
-
                 if(err) { return handleError(res, err); }
                 if(!groceryList) { return res.send(404); }
+
                 return res.json(groceryList);
 
             });
@@ -78,12 +78,20 @@ exports.update = function(req, res) {
     if (err) { return handleError(res, err); }
     if(!groceryList) { return res.send(404); }
     //clear gotIngredients to persist deleted elements
+
     groceryList.gotIngredients = [];
     var updated = _.merge(groceryList, list);
-        console.log(updated);
+    //bug mark modified not working to persist the data
     updated.markModified('gotIngredients');
-    updated.save(function (err) {
-        getPopulatedList(req.params.id, res);
+
+    console.log("updated pre save", updated);
+    updated.remove(function(err) {
+        GroceryList.create(updated, function (err, groceryList) {
+            if (err) {
+                return handleError(res, err);
+            }
+            return res.json(201, groceryList);
+        });
     });
   });
 };

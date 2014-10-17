@@ -4,7 +4,7 @@ This is the boodschappen.shopping view.
 
     <div>
         <ul>
-            <li data-ng-repeat="ingredient in doneArray">
+            <li data-ng-repeat="ingredient in doneArray track by ingredient._id">
                 {{ingredient.name}}<button ng-click="removeIngredient(ingredient)">remove</button>
             </li>
         </ul>
@@ -12,7 +12,7 @@ This is the boodschappen.shopping view.
     </div>
 
     <div>
-        <li data-ng-repeat="ingredient in neededArray">
+        <li data-ng-repeat="ingredient in neededArray track by ingredient.ingredient._id">
             {{ingredient.amount}} x {{ingredient.ingredient.name}} <button ng-click="addIngredient(ingredient.ingredient)">add</button>
         </li>
     </div>
