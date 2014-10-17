@@ -9,14 +9,14 @@ angular.module('recipeApp')
                 date: new Date()
             };
         }
-        function ingredientInList (list, ingredient) {
+        this.ingredientInList = function (list, ingredient) {
             angular.forEach(list, function (listIngredient) {
                if(listIngredient.ingredient._id === ingredient.ingredient._id) {
                    return true;
                }
             });
             return false;
-        }
+        };
         listResource = $resource('/api/grocery-lists/:id', {id: '@_id'});
         currentList = createNewList();
 
@@ -56,10 +56,11 @@ angular.module('recipeApp')
 
         this.getNeededIngredients = function (list) {
             var neededIngredients = [],
-                ingredientsList = this.listIngredients(list);
+                ingredientsList = this.listIngredients(list),
+                self = this;
 
             angular.forEach(ingredientsList, function (ingredient) {
-               if(!ingredientInList(neededIngredients, ingredient)) {
+               if(!self.ingredientInList(neededIngredients, ingredient)) {
                     neededIngredients.push(ingredient);
                }
             });

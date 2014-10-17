@@ -4,14 +4,23 @@ angular.module('recipeApp')
     .controller('BoodschappenShoppingCtrl', function ($scope, BoodschappenLijst, $stateParams, socket) {
         var list = BoodschappenLijst.get({id: $stateParams.id});
 
-        function processList () {
+        //TODO: almost the same functionality as the function in boodschappenlijstservice
+        var ingredientInList = function (list, ingredient) {
+            var returnVal = -1;
+            angular.forEach(list, function (listIngredient, index) {
+                if(listIngredient._id === ingredient._id) {
+                    returnVal = index;
+                }
+            });
+            return returnVal;
+        }
+        function processList (list) {
             $scope.doneArray = list.gotIngredients || [];
             $scope.neededArray = BoodschappenLijst.getNeededIngredients(list);
         }
-
-        list.$promise.then(function () {
+        list.$promise.then(function (data) {
             socket.syncUpdates('grocery-list', list, processList);
-            processList();
+            processList(data);
         });
 
         $scope.$on('$destroy', function () {
@@ -23,16 +32,21 @@ angular.module('recipeApp')
             list.$save();
         }
         $scope.addIngredient = function (ingredient) {
-            if($scope.doneArray.indexOf(ingredient) === -1) {
+            if(ingredientInList($scope.doneArray, ingredient) === -1) {
                 $scope.doneArray.push(ingredient);
             }
+            //sync arrays
+            list.gotIngredients = $scope.doneArray;
+
             list.$save();
         };
         $scope.removeIngredient = function (ingredient) {
-            var index = $scope.doneArray.indexOf(ingredient);
+            var index =  ingredientInList($scope.doneArray, ingredient);
             if(index > -1) {
                 $scope.doneArray.splice(index, 1);
             }
+            list.gotIngredients = $scope.doneArray;
+
             list.$save();
         };
     });
