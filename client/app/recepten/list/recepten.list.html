@@ -1,7 +1,18 @@
-<div class="col-md-12">
-    <div ng-repeat="recipe in recipes" class="" >
-        <a ui-sref="recepten.view({id: recipe._id})" >{{ recipe.name }}</a> <a ng-click="addToNewGroceryList(recipe)">add to new</a>
+<div class="col-md-12 recipe-list">
+  <div class="row">
+    <div class="col-md-4" ng-repeat="recipe in recipes">
+      <div class="recipe">
+        <div class="image"></div>
+        <div class="name">
+          <a ui-sref="recepten.view({id: recipe._id})" >{{ recipe.name }}</a>
+        </div>
+        <div class="rating"></div>
+        <div class="control">
+          <a ng-click="addToNewGroceryList(recipe)"><i class="fa fa-plus"></i> <i class="fa fa-th-list"></i></a>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 <div class="col-md-12">
     <div ui-view></div>
