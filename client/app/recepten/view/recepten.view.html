@@ -1,4 +1,26 @@
-<div class="col-md-12 recipe-view">
+<div class="recipe-view" ng-class="{active: active()}">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="name">
+        <h1>
+          {{recipe.name}}
+        </h1>
+      </div>
+      <div class="ingredients">
+        <h2>ingredienten</h2>
+        <ul>
+          <li data-ng-repeat="ingredient in recipe.ingredients" class="ingredient">
+            {{ingredient.amount}} {{ingredient.unit}} {{ingredient.ingredient}}
+          </li>
+        </ul>
+      </div>
+      <div class="steps">
+        <div data-ng-repeat="step in recipe.steps" class="step">
+          {{step}}
+        </div>
+      </div>
+    </div>
+  </div>
 This is the recepten/view view.
     {{recipe}}
 </div>
