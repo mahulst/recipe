@@ -13,7 +13,7 @@ angular.module('recipeApp')
                 }
             });
             return returnVal;
-        }
+        };
         function processList (list) {
             $scope.doneArray = list.gotIngredients || [];
             $scope.neededArray = BoodschappenLijst.getNeededIngredients(list);
@@ -30,7 +30,7 @@ angular.module('recipeApp')
         $scope.changeList = function () {
             $scope.doneArray.push($scope.neededArray[0].ingredient);
             list.$save();
-        }
+        };
         $scope.addIngredient = function (ingredient) {
             if(ingredientInList($scope.doneArray, ingredient) === -1) {
                 $scope.doneArray.push(ingredient);
