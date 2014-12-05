@@ -1,21 +1,78 @@
 <div class="row">
   <div class="col-md-12">
     <div class="recipe-carousel">
+      <ul rn-carousel rn-carousel-controls rn-carousel-index="carouselIndex" rn-carousel-buffered class="carousel1">
+        <li ng-repeat="slide in slides track by slide.id" ng-class="'id-' + slide.id">
+          <div ng-style="{'background-image': 'url(' + slide.image + ')'}"  class="bgimage">
 
+          </div>
+        </li>
+      </ul>
+
+      <div class="carousel-indicators" rn-carousel-indicators ng-if="slides.length > 1" slides="slides" rn-carousel-index="carouselIndex"></div>
     </div>
   </div>
 </div>
 <div class="row">
   <div class="col-md-12">
     <div class="best-recipes">
-
+      <div class="row">
+        <div class="recipe col-md-2" data-ng-repeat="recipe in bestRecipes">
+          <div class="image">
+            <img src="/assets/images/empty-recipe.jpg" alt=""/>
+          </div>
+          <div class="name">
+            {{recipe.name}}
+          </div>
+          <div class="rating" ng-class="recipe.rating"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 <div class="row">
   <div class="col-md-12">
     <div class="recipe-categories">
+      <div class="row">
+        <div class="col-md-3">
+          <img src="/assets/images/category1.jpg" alt=""/>
+          Chicken
+        </div>
+        <div class="col-md-3">
+          <img src="/assets/images/category1.jpg" alt=""/>
+          Chicken
 
+        </div>
+        <div class="col-md-3">
+          <img src="/assets/images/category1.jpg" alt=""/>
+          Chicken
+
+        </div>
+        <div class="col-md-3">
+          <img src="/assets/images/category1.jpg" alt=""/>
+          Chicken
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <img src="/assets/images/category1.jpg" alt=""/>
+          Chicken
+        </div>
+        <div class="col-md-3">
+          <img src="/assets/images/category1.jpg" alt=""/>
+          Chicken
+
+        </div>
+        <div class="col-md-3">
+          <img src="/assets/images/category1.jpg" alt=""/>
+          Chicken
+
+        </div>
+        <div class="col-md-3">
+          <img src="/assets/images/category1.jpg" alt=""/>
+          Chicken
+        </div>
+      </div>
     </div>
   </div>
 </div>

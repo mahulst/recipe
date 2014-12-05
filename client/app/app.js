@@ -7,7 +7,8 @@ angular.module('recipeApp', [
   'ngSanitize',
   'ui.bootstrap',
   'btford.socket-io',
-  'ui.router'
+  'ui.router',
+  'angular-carousel'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

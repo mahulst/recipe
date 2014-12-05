@@ -1,16 +1,53 @@
 .recipe-carousel {
   width: 100%;
-  min-height: 200px;
-  background-color: #ccc;
+  img {
+    max-height: 350px;
+  }
 
+
+  .bgimage {
+    text-align:right;
+    color:white;
+    background-size:cover;
+    height: 100%;
+    background-position: center center;
+  }
+
+  ul[rn-carousel] {
+    width:100%;
+    height: 350px;
+
+    margin: 0 auto;
+    li > div {
+      width: 80%;
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+  }
+  .carousel-indicators {
+    position: relative;
+    bottom: 0;
+
+  }
 }
 .best-recipes {
   width: 100%;
   min-height: 100px;
-  background-color: #ccc;
+  .recipe {
+    height: 100px;
+  }
+  .image {
+    img {
+      max-width: 100%;
+    }
+  }
+  .name {
+  }
 }
 .recipe-categories{
   width: 100%;
   min-height: 200px;
-  background-color: #ccc;
+  img {
+    max-width: 100%;
+  }
 }
