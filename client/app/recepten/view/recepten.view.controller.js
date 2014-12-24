@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('recipeApp')
-  .controller('ReceptenViewCtrl', function ($scope, Recept, $stateParams) {
+  .controller('ReceptenViewCtrl', function ($scope, Recept, $stateParams, $state) {
     $scope.recipe = Recept.get({id: $stateParams.id});
-      $scope.active = function () {
+    $scope.active = function () {
+      return true;
     };
   });

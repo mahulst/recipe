@@ -14,5 +14,5 @@
     </div>
   </div>
 </div>
-<div ui-view></div>
+<div ui-view class="recipe-ui-view" ng-class="{ active: $state.includes('recepten.view') }"></div>
 <a ui-sref="addRecipe.basic">add</a>
