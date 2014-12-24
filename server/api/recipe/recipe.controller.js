@@ -8,7 +8,7 @@ exports.index = function(req, res) {
   Recipe.find({})
     .populate('tags')
     .populate('ingredients.ingredient')
-    .exec(function (err, populatedRecipes) {        
+    .exec(function (err, populatedRecipes) {
       if(err) { return handleError(res, err); }
       return res.json(200, populatedRecipes);
     });
@@ -16,11 +16,14 @@ exports.index = function(req, res) {
 
 // Get a single recipe
 exports.show = function(req, res) {
-  Recipe.findById(req.params.id, function (err, recipe) {
-    if(err) { return handleError(res, err); }
-    if(!recipe) { return res.send(404); }
-    return res.json(recipe);
-  });
+  Recipe.findOne({_id: req.params.id})
+    .populate('tags')
+    .populate('ingredients.ingredient')
+    .exec(function (err, populatedRecipe) {
+      if(err) { return handleError(res, err); }
+      if(!populatedRecipe) { return res.send(404); }
+      return res.json(200, populatedRecipe);
+    });
 };
 
 // Creates a new recipe in the DB.

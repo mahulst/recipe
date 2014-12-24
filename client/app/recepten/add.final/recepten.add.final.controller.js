@@ -34,6 +34,6 @@ angular.module('recipeApp')
 
     $scope.saveRecipe = function () {
         var recipe = new Recept($scope.recipe);
-        recipe.$save();
+        recipe.save();
     };
   });

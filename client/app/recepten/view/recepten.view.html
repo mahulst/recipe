@@ -1,23 +1,40 @@
-<div class="recipe-view" ng-class="{active: active()}">
+<div class="viewport">
   <div class="close"><i class="fa fa-close" ui-sref="recepten"></i></div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="name">
-        <h1>
-          {{recipe.name}}
-        </h1>
-      </div>
-      <div class="ingredients">
-        <h2>ingredienten</h2>
-        <ul>
-          <li data-ng-repeat="ingredient in recipe.ingredients" class="ingredient">
-            {{ingredient.amount}} {{ingredient.unit}} {{ingredient.ingredient}}
-          </li>
-        </ul>
-      </div>
-      <div class="steps">
-        <div data-ng-repeat="step in recipe.steps" class="step">
-          {{step}}
+
+  <div class="recipe-view">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="name">
+              <h1>
+                {{recipe.name}}
+              </h1>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="ingredients">
+              <h2>ingredienten</h2>
+              <ul>
+                <li data-ng-repeat="ingredient in recipe.ingredients" class="ingredient">
+                  {{ingredient.amount}} {{ingredient.unit}} {{ingredient.ingredient.name}}
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="steps">
+              <div class="steps-controls">
+                <a class="btn btn-primary btn-large"><i class="fa fa-print"></i>print</a>
+              </div>
+              <div data-ng-repeat="step in recipe.steps" class="step" ng-if="step.text != ''">
+                {{$index + 1}}.{{step.text}}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

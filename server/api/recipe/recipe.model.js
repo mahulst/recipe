@@ -22,6 +22,10 @@ var RecipeSchema = new Schema({
   	type: Schema.Types.ObjectId,
   	ref: 'Tag'
   }],
+  steps: [{
+    id: Number,
+    text: String
+  }],
   active: Boolean
 });
 
